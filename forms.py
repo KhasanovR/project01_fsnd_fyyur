@@ -96,7 +96,6 @@ class VenueForm(Form):
         'name', validators=[DataRequired()]
     )
     genres = SelectMultipleField(
-        # TODO implement enum restriction
         'genres', validators=[DataRequired()],
         choices=[(member.value, member.value.capitalize()) for name, member in Genre.__members__.items()]
     )
@@ -111,7 +110,7 @@ class VenueForm(Form):
         choices=[(member.value, member.value.upper()) for name, member in State.__members__.items()]
     )
     phone = StringField(
-        'phone', validators=[Regexp('^[2-9]\d{2}-\d{3}-\d{4}$')]
+        'phone', validators=[Regexp('^\d{3}-\d{3}-\d{4}$')]
     )
     website = StringField(
         'image_link', validators=[URL()]
@@ -134,7 +133,6 @@ class ArtistForm(Form):
         'name', validators=[DataRequired()]
     )
     genres = SelectMultipleField(
-        # TODO implement enum restriction
         'genres', validators=[DataRequired()],
         choices=[(member.value, member.value.capitalize()) for name, member in Genre.__members__.items()]
     )
@@ -146,7 +144,7 @@ class ArtistForm(Form):
         choices=[(member.value, member.value.upper()) for name, member in State.__members__.items()]
     )
     phone = StringField(
-        'phone', validators=[Regexp('^[2-9]\d{2}-\d{3}-\d{4}$')]
+        'phone', validators=[Regexp('^\d{3}-\d{3}-\d{4}$')]
     )
     website = StringField(
         'image_link', validators=[URL()]
